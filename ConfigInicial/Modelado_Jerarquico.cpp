@@ -1,6 +1,6 @@
-//Previo 05
+//Previo 06
 //Marquez Martinez Fatima Athziri 
-//Fecha de entrega: 14 de septiembre de 2026
+//Fecha de entrega: 21 de septiembre de 2026
 //No. de Cuenta: 319159596
 
 #include<iostream>
