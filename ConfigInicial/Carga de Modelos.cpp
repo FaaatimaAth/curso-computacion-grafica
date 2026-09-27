@@ -1,4 +1,4 @@
-// Previo 06
+// Practica 06
 // Marquez Martinez Fatima Ahtizi
 // Fecha de entrega: 26 de septiembre del 2026
 // No. de Cuenta: 319159596
@@ -37,11 +37,6 @@ void DoMovement();
 
 
 // Camera
-// CORREGIDO: la cámara estaba casi encima del origen (z = 3), por eso todo
-// se veía chiquito y amontonado en medio de la pantalla. La alejamos un poco
-// para poder ver toda la escena (perros, cabaña, gato, auto y sillas), pero
-// menos que en el intento anterior para no perder el tamaño original de los
-// perros y el gato (que ya estaban bien).
 Camera camera(glm::vec3(0.0f, 4.0f, 22.0f));
 bool keys[1024];
 GLfloat lastX = 400, lastY = 300;
@@ -63,7 +58,7 @@ int main()
     glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
 
     // Create a GLFWwindow object that we can use for GLFW's functions
-    GLFWwindow* window = glfwCreateWindow(WIDTH, HEIGHT, "Previo 6. Marquez Martinez Fatima Athziri", nullptr, nullptr);
+    GLFWwindow* window = glfwCreateWindow(WIDTH, HEIGHT, "Practica 6. Marquez Martinez Fatima Athziri", nullptr, nullptr);
 
     if (nullptr == window)
     {
@@ -113,18 +108,10 @@ int main()
     // Agregando el modelo de las bancas y sillas (ODB)
     Model odb((char*)"Models/ODB-0002 Bench And Chair Cycles.obj");
 
-    // CORREGIDO: se aumenta el far plane de 100.0f a 300.0f porque la cámara
-    // está un poco más lejos y la cabaña se traslada al fondo (Z = -15); con
-    // 100.0f algunos objetos se recortaban.
+   
     glm::mat4 projection = glm::perspective(camera.GetZoom(), (float)SCREEN_WIDTH / (float)SCREEN_HEIGHT, 0.1f, 300.0f);
 
-    // NOTA IMPORTANTE sobre las sillas:
-    // El archivo "ODB-0002 Bench And Chair Cycles.obj" ya trae VARIAS bancas
-    // y sillas agrupadas en un solo modelo (por eso con una sola instancia ya
-    // se veía un conjunto de sillas). Si al correrlo ves que con 1 sola
-    // instancia ya tienes tus 8 sillas, deja NUM_ODB_INSTANCES en 1. Si tu
-    // modelo en realidad trae solo 1 silla/banca y necesitas llegar a 8,
-    // sube este número (ej. 8) y el for de abajo las va a acomodar en fila.
+    
     const int NUM_ODB_INSTANCES = 1;
     glm::vec3 odbPositions[8] = {
         glm::vec3(-12.0f, 0.0f, -8.0f),
